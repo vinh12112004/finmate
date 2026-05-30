@@ -1,0 +1,453 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Fluid Scholar - Student Finance Dashboard</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link
+            crossorigin=""
+            href="https://fonts.gstatic.com"
+            rel="preconnect"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+        </style>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            error: "#ac3149",
+                            "surface-tint": "#4e45e4",
+                            secondary: "#006d4a",
+                            "secondary-fixed-dim": "#5fedb0",
+                            "on-primary-fixed-variant": "#3220cb",
+                            "tertiary-dim": "#622bcb",
+                            "error-dim": "#770326",
+                            "on-tertiary-fixed": "#290068",
+                            "tertiary-container": "#c4acff",
+                            "inverse-on-surface": "#9a9d9f",
+                            "tertiary-fixed": "#c4acff",
+                            "on-background": "#2d3337",
+                            "inverse-primary": "#8582ff",
+                            "on-primary-container": "#270ac3",
+                            "on-error-container": "#68001f",
+                            "on-tertiary": "#fdf7ff",
+                            "surface-variant": "#dde3e7",
+                            "surface-bright": "#f7f9fb",
+                            "on-secondary-container": "#005e3f",
+                            "surface-container-lowest": "#ffffff",
+                            primary: "#4e45e4",
+                            "primary-fixed-dim": "#adabff",
+                            "outline-variant": "#acb3b7",
+                            "secondary-container": "#6ffbbe",
+                            "on-secondary-fixed": "#004930",
+                            "on-tertiary-fixed-variant": "#4d00b7",
+                            "surface-container": "#eaeef1",
+                            "inverse-surface": "#0b0f10",
+                            "on-primary-fixed": "#17008c",
+                            outline: "#757c7f",
+                            "tertiary-fixed-dim": "#b89bff",
+                            "surface-dim": "#d3dbdf",
+                            "on-secondary-fixed-variant": "#006947",
+                            "on-error": "#fff7f7",
+                            "primary-fixed": "#bdbaff",
+                            background: "#f7f9fb",
+                            "surface-container-highest": "#dde3e7",
+                            "on-surface": "#2d3337",
+                            "error-container": "#f76a80",
+                            "surface-container-high": "#e3e9ec",
+                            "primary-dim": "#4135d8",
+                            tertiary: "#6e3bd8",
+                            "surface-container-low": "#f1f4f6",
+                            "on-primary": "#fbf7ff",
+                            "on-secondary": "#e6ffee",
+                            "secondary-dim": "#005f40",
+                            "primary-container": "#bdbaff",
+                            surface: "#f7f9fb",
+                            "on-tertiary-container": "#4300a1",
+                            "secondary-fixed": "#6ffbbe",
+                            "on-surface-variant": "#596063",
+                        },
+                        borderRadius: {
+                            DEFAULT: "1rem",
+                            lg: "2rem",
+                            xl: "3rem",
+                            full: "9999px",
+                        },
+                        spacing: {},
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans", "sans-serif"],
+                            body: ["Inter", "sans-serif"],
+                            label: ["Inter", "sans-serif"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                min-height: max(884px, 100dvh);
+            }
+        </style>
+    </head>
+    <body
+        class="bg-surface text-on-surface font-body antialiased min-h-screen pb-24 md:pb-0"
+    >
+        <!-- TopAppBar -->
+        <header
+            class="sticky top-0 w-full z-50 flex items-center justify-between px-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-[40px] shadow-[0_32px_64px_rgba(45,51,55,0.05)] rounded-full mt-4 mx-4 px-6 py-2 max-w-7xl md:mx-auto"
+        >
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden"
+                >
+                    <img
+                        alt="Student Profile"
+                        class="w-full h-full object-cover"
+                        data-alt="close up portrait of a young college student smiling outdoors with blurred campus background"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo3qjhEtSS8uHFfhmY6tanW73H8bib06aYSvVijbGoSXIsZEImF72Ai4CAy5jLcMcS5yNGzi38Q-l5Qz8mkDl8jlDM9Z10JGQ0vPRh6nHYP52e5jznKLNA4aeIiMAiW_77XjSTBQ8T2iWPZjF5mk8q0nsSjNf7qX7Yy_sy6KPPasAZEp7bCdwvuwm-bhnHL7EvkELiKul7SNULzBTCxevPHx7ihMK2ZBDqsc6ORMzyqKxsgkaYm-UO55sk0dc8RFkPOs5OA88Kytk"
+                    />
+                </div>
+                <h1
+                    class="text-xl font-black tracking-tighter text-indigo-600 dark:text-indigo-400 font-headline"
+                >
+                    Fluid Scholar
+                </h1>
+            </div>
+            <button
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:opacity-80 transition-opacity text-indigo-600 dark:text-indigo-400"
+            >
+                <span class="material-symbols-outlined">settings</span>
+            </button>
+        </header>
+        <main
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 space-y-12"
+        >
+            <!-- Hero Section - Safe to Spend -->
+            <section
+                class="relative bg-surface-container-lowest rounded-xl p-8 sm:p-12 overflow-hidden isolate shadow-[0_32px_64px_rgba(45,51,55,0.04)]"
+            >
+                <!-- Decorative gradient orb -->
+                <div
+                    class="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-primary/30 to-tertiary/30 rounded-full blur-3xl opacity-50 pointer-events-none"
+                ></div>
+                <div
+                    class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-8"
+                >
+                    <div class="space-y-4 max-w-xl">
+                        <p
+                            class="font-label text-sm font-semibold text-on-surface-variant uppercase tracking-wider"
+                        >
+                            Safe to Spend Today
+                        </p>
+                        <h2
+                            class="font-headline text-[3.5rem] leading-none font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary"
+                        >
+                            $42.50
+                        </h2>
+                        <p class="font-body text-on-surface-variant max-w-md">
+                            You're on track. You've saved $12 this week by
+                            packing your own lunches.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-surface-container-high rounded-full px-6 py-4 flex items-center gap-4"
+                    >
+                        <div class="flex-shrink-0">
+                            <span
+                                class="material-symbols-outlined text-primary text-3xl"
+                                >account_balance_wallet</span
+                            >
+                        </div>
+                        <div>
+                            <p
+                                class="font-label text-xs font-semibold text-on-surface-variant"
+                            >
+                                Remaining Monthly Budget
+                            </p>
+                            <p
+                                class="font-headline text-xl font-bold text-on-surface"
+                            >
+                                $450.00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Budget Progress Grid -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Daily Budget -->
+                <div class="bg-surface-container-low rounded-lg p-8 space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-headline text-lg font-bold">
+                            Daily Limit
+                        </h3>
+                        <p class="font-headline text-lg font-bold text-primary">
+                            $15 / $57
+                        </p>
+                    </div>
+                    <div
+                        class="w-full bg-surface-container-high h-4 rounded-full overflow-hidden relative"
+                    >
+                        <div
+                            class="absolute top-0 left-0 h-full bg-gradient-to-r from-secondary to-primary w-[26%] rounded-full"
+                        ></div>
+                    </div>
+                    <p class="font-body text-sm text-on-surface-variant">
+                        Great job! You have plenty of room for dinner or a
+                        late-night snack.
+                    </p>
+                </div>
+                <!-- Weekly Budget -->
+                <div class="bg-surface-container-low rounded-lg p-8 space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-headline text-lg font-bold">
+                            Weekly Limit
+                        </h3>
+                        <p
+                            class="font-headline text-lg font-bold text-tertiary"
+                        >
+                            $120 / $400
+                        </p>
+                    </div>
+                    <div
+                        class="w-full bg-surface-container-high h-4 rounded-full overflow-hidden relative"
+                    >
+                        <div
+                            class="absolute top-0 left-0 h-full bg-gradient-to-r from-primary to-tertiary w-[30%] rounded-full"
+                        ></div>
+                    </div>
+                    <p class="font-body text-sm text-on-surface-variant">
+                        You're pacing well for the week. Keep an eye on weekend
+                        expenses.
+                    </p>
+                </div>
+            </section>
+            <!-- Recent Transactions -->
+            <section class="space-y-6">
+                <h3 class="font-headline text-2xl font-bold px-4">
+                    Recent Activity
+                </h3>
+                <div
+                    class="bg-surface-container-lowest rounded-xl p-4 sm:p-6 shadow-[0_32px_64px_rgba(45,51,55,0.04)] space-y-3"
+                >
+                    <!-- Transaction Item -->
+                    <div
+                        class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg transition-colors hover:bg-surface-container"
+                    >
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0"
+                            >
+                                <span
+                                    class="material-symbols-outlined"
+                                    style="
+                                        font-variation-settings: &quot;FILL&quot;
+                                            1;
+                                    "
+                                    >restaurant</span
+                                >
+                            </div>
+                            <div>
+                                <p
+                                    class="font-headline font-semibold text-base"
+                                >
+                                    Campus Cafe
+                                </p>
+                                <p
+                                    class="font-label text-xs text-on-surface-variant"
+                                >
+                                    Today, 8:45 AM • Food
+                                </p>
+                            </div>
+                        </div>
+                        <p class="font-headline font-bold text-on-surface">
+                            -$6.50
+                        </p>
+                    </div>
+                    <!-- Transaction Item -->
+                    <div
+                        class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg transition-colors hover:bg-surface-container"
+                    >
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container shrink-0"
+                            >
+                                <span
+                                    class="material-symbols-outlined"
+                                    style="
+                                        font-variation-settings: &quot;FILL&quot;
+                                            1;
+                                    "
+                                    >directions_bus</span
+                                >
+                            </div>
+                            <div>
+                                <p
+                                    class="font-headline font-semibold text-base"
+                                >
+                                    City Transit Pass
+                                </p>
+                                <p
+                                    class="font-label text-xs text-on-surface-variant"
+                                >
+                                    Yesterday • Transport
+                                </p>
+                            </div>
+                        </div>
+                        <p class="font-headline font-bold text-on-surface">
+                            -$25.00
+                        </p>
+                    </div>
+                    <!-- Transaction Item -->
+                    <div
+                        class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg transition-colors hover:bg-surface-container"
+                    >
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shrink-0"
+                            >
+                                <span
+                                    class="material-symbols-outlined"
+                                    style="
+                                        font-variation-settings: &quot;FILL&quot;
+                                            1;
+                                    "
+                                    >book</span
+                                >
+                            </div>
+                            <div>
+                                <p
+                                    class="font-headline font-semibold text-base"
+                                >
+                                    University Bookstore
+                                </p>
+                                <p
+                                    class="font-label text-xs text-on-surface-variant"
+                                >
+                                    Mon, 14th • Education
+                                </p>
+                            </div>
+                        </div>
+                        <p class="font-headline font-bold text-on-surface">
+                            -$85.00
+                        </p>
+                    </div>
+                    <!-- Transaction Item -->
+                    <div
+                        class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg transition-colors hover:bg-surface-container"
+                    >
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-[#e6ffee] flex items-center justify-center text-[#006d4a] shrink-0"
+                            >
+                                <span
+                                    class="material-symbols-outlined"
+                                    style="
+                                        font-variation-settings: &quot;FILL&quot;
+                                            1;
+                                    "
+                                    >payments</span
+                                >
+                            </div>
+                            <div>
+                                <p
+                                    class="font-headline font-semibold text-base"
+                                >
+                                    Tutor Gig Payment
+                                </p>
+                                <p
+                                    class="font-label text-xs text-on-surface-variant"
+                                >
+                                    Mon, 14th • Income
+                                </p>
+                            </div>
+                        </div>
+                        <p class="font-headline font-bold text-secondary">
+                            +$45.00
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- BottomNavBar -->
+        <nav
+            class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/70 dark:bg-slate-900/70 backdrop-blur-[40px] rounded-t-[3rem] shadow-[0_-8px_32px_rgba(45,51,55,0.04)] md:hidden"
+        >
+            <a
+                class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-200 rounded-full px-5 py-2 hover:opacity-80 transition-opacity Active: scale-90 duration-200"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >grid_view</span
+                >
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Home</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span class="material-symbols-outlined mb-1">insights</span>
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Insights</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span class="material-symbols-outlined mb-1">add_circle</span>
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Add</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span class="material-symbols-outlined mb-1"
+                    >notifications</span
+                >
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Alerts</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span class="material-symbols-outlined mb-1">person</span>
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Profile</span
+                >
+            </a>
+        </nav>
+    </body>
+</html>

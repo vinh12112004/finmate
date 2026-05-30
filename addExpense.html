@@ -1,0 +1,267 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Fluid Scholar - Add Expense</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            error: "#ac3149",
+                            "surface-tint": "#4e45e4",
+                            secondary: "#006d4a",
+                            "secondary-fixed-dim": "#5fedb0",
+                            "on-primary-fixed-variant": "#3220cb",
+                            "tertiary-dim": "#622bcb",
+                            "error-dim": "#770326",
+                            "on-tertiary-fixed": "#290068",
+                            "tertiary-container": "#c4acff",
+                            "inverse-on-surface": "#9a9d9f",
+                            "tertiary-fixed": "#c4acff",
+                            "on-background": "#2d3337",
+                            "inverse-primary": "#8582ff",
+                            "on-primary-container": "#270ac3",
+                            "on-error-container": "#68001f",
+                            "on-tertiary": "#fdf7ff",
+                            "surface-variant": "#dde3e7",
+                            "surface-bright": "#f7f9fb",
+                            "on-secondary-container": "#005e3f",
+                            "surface-container-lowest": "#ffffff",
+                            primary: "#4e45e4",
+                            "primary-fixed-dim": "#adabff",
+                            "outline-variant": "#acb3b7",
+                            "secondary-container": "#6ffbbe",
+                            "on-secondary-fixed": "#004930",
+                            "on-tertiary-fixed-variant": "#4d00b7",
+                            "surface-container": "#eaeef1",
+                            "inverse-surface": "#0b0f10",
+                            "on-primary-fixed": "#17008c",
+                            outline: "#757c7f",
+                            "tertiary-fixed-dim": "#b89bff",
+                            "surface-dim": "#d3dbdf",
+                            "on-secondary-fixed-variant": "#006947",
+                            "on-error": "#fff7f7",
+                            "primary-fixed": "#bdbaff",
+                            background: "#f7f9fb",
+                            "surface-container-highest": "#dde3e7",
+                            "on-surface": "#2d3337",
+                            "error-container": "#f76a80",
+                            "surface-container-high": "#e3e9ec",
+                            "primary-dim": "#4135d8",
+                            tertiary: "#6e3bd8",
+                            "surface-container-low": "#f1f4f6",
+                            "on-primary": "#fbf7ff",
+                            "on-secondary": "#e6ffee",
+                            "secondary-dim": "#005f40",
+                            "primary-container": "#bdbaff",
+                            surface: "#f7f9fb",
+                            "on-tertiary-container": "#4300a1",
+                            "secondary-fixed": "#6ffbbe",
+                            "on-surface-variant": "#596063",
+                        },
+                        borderRadius: {
+                            DEFAULT: "1rem",
+                            lg: "2rem",
+                            xl: "3rem",
+                            full: "9999px",
+                        },
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans", "sans-serif"],
+                            body: ["Inter", "sans-serif"],
+                            label: ["Inter", "sans-serif"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                min-height: max(884px, 100dvh);
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background font-body text-on-surface antialiased min-h-screen flex flex-col"
+    >
+        <!-- Top Navigation (Shell suppressed based on prompt indicating a "Focused/Transactional" sub-page context for Add Expense, but including TopAppBar with 'back' intent as per best practices for nested flows) -->
+        <header
+            class="sticky top-0 w-full z-50 flex items-center justify-between px-6 bg-white/70 backdrop-blur-[40px] text-primary font-headline font-bold text-lg rounded-full mt-4 mx-4 py-2 shadow-[0_32px_64px_rgba(45,51,55,0.05)] w-[calc(100%-2rem)] max-w-2xl lg:mx-auto"
+        >
+            <button
+                class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-highest transition-colors text-slate-500"
+            >
+                <span class="material-symbols-outlined text-2xl"
+                    >arrow_back</span
+                >
+            </button>
+            <span class="text-xl font-black tracking-tighter text-primary"
+                >New Entry</span
+            >
+            <div class="w-10"></div>
+            <!-- Placeholder for balance -->
+        </header>
+        <main
+            class="flex-grow flex flex-col items-center pt-8 pb-24 px-6 max-w-md mx-auto w-full"
+        >
+            <!-- Voice Input Section (Creative Core) -->
+            <section class="flex flex-col items-center mb-12 relative w-full">
+                <div class="text-center mb-8 z-10 relative">
+                    <h1
+                        class="font-headline font-bold text-3xl text-on-background mb-2"
+                    >
+                        Log an expense
+                    </h1>
+                    <p class="font-body text-on-surface-variant text-sm">
+                        Tap the mic and tell me what you bought.
+                    </p>
+                </div>
+                <!-- Voice Button with Visual Waves -->
+                <div
+                    class="relative flex items-center justify-center w-48 h-48 mt-4"
+                >
+                    <!-- Ambient Waves (Visual feedback placeholder) -->
+                    <div
+                        class="absolute inset-0 bg-primary-fixed rounded-full opacity-20 scale-125 blur-xl"
+                    ></div>
+                    <div
+                        class="absolute inset-4 bg-tertiary-container rounded-full opacity-30 scale-110 blur-lg"
+                    ></div>
+                    <div
+                        class="absolute inset-8 bg-secondary-container rounded-full opacity-40 scale-100 blur-md"
+                    ></div>
+                    <!-- The Main Mic Button -->
+                    <button
+                        class="relative z-10 w-24 h-24 rounded-full bg-gradient-to-tr from-primary to-tertiary flex items-center justify-center shadow-[0_16px_32px_rgba(78,69,228,0.25)] hover:scale-105 transition-transform duration-300"
+                    >
+                        <span
+                            class="material-symbols-outlined text-4xl text-on-primary"
+                            style="font-variation-settings: &quot;FILL&quot; 1"
+                            >mic</span
+                        >
+                    </button>
+                </div>
+                <p
+                    class="mt-8 text-xs font-label text-primary-dim uppercase tracking-widest font-semibold"
+                >
+                    Or enter manually below
+                </p>
+            </section>
+            <!-- Manual Entry Form -->
+            <section
+                class="w-full bg-surface-container-lowest p-6 rounded-xl shadow-[0_32px_64px_rgba(45,51,55,0.03)] flex flex-col gap-6 relative z-10"
+            >
+                <!-- Amount Field -->
+                <div class="flex flex-col gap-2">
+                    <label
+                        class="font-label text-sm text-on-surface-variant font-medium ml-2"
+                        >Amount</label
+                    >
+                    <div class="relative flex items-center">
+                        <span
+                            class="absolute left-6 text-2xl font-headline font-bold text-on-surface"
+                            >$</span
+                        >
+                        <input
+                            class="w-full bg-surface-container-high rounded-full py-4 pl-12 pr-6 font-headline text-3xl font-bold text-on-surface placeholder-outline focus:outline-none focus:ring-2 focus:ring-primary-fixed focus:ring-opacity-50 border-none transition-shadow"
+                            placeholder="0.00"
+                            type="number"
+                        />
+                    </div>
+                </div>
+                <!-- Category Selection (AI Powered) -->
+                <div class="flex flex-col gap-3">
+                    <div class="flex items-center justify-between ml-2">
+                        <label
+                            class="font-label text-sm text-on-surface-variant font-medium"
+                            >Category</label
+                        >
+                        <span
+                            class="flex items-center gap-1 text-[10px] text-tertiary font-bold uppercase tracking-wider bg-tertiary-container/30 px-2 py-1 rounded-full"
+                        >
+                            <span
+                                class="material-symbols-outlined text-[12px]"
+                                style="
+                                    font-variation-settings: &quot;FILL&quot; 1;
+                                "
+                                >auto_awesome</span
+                            >
+                            Smart Pick
+                        </span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button
+                            class="px-4 py-2 rounded-sm bg-primary-container text-on-primary-container font-label text-sm font-medium transition-colors flex items-center gap-2 shadow-sm"
+                        >
+                            <span class="material-symbols-outlined text-lg"
+                                >restaurant</span
+                            >
+                            Food &amp; Drink
+                        </button>
+                        <button
+                            class="px-4 py-2 rounded-sm bg-surface-container-highest text-on-surface-variant font-label text-sm font-medium hover:bg-surface-variant transition-colors flex items-center gap-2"
+                        >
+                            <span class="material-symbols-outlined text-lg"
+                                >local_cafe</span
+                            >
+                            Coffee
+                        </button>
+                        <button
+                            class="px-4 py-2 rounded-sm bg-surface-container-highest text-on-surface-variant font-label text-sm font-medium hover:bg-surface-variant transition-colors flex items-center gap-2"
+                        >
+                            <span class="material-symbols-outlined text-lg"
+                                >directions_bus</span
+                            >
+                            Transport
+                        </button>
+                        <button
+                            class="px-4 py-2 rounded-sm bg-surface-container-highest text-on-surface-variant font-label text-sm font-medium hover:bg-surface-variant transition-colors flex items-center gap-2"
+                        >
+                            <span class="material-symbols-outlined text-lg"
+                                >add</span
+                            >
+                            More
+                        </button>
+                    </div>
+                </div>
+                <!-- Notes Field -->
+                <div class="flex flex-col gap-2">
+                    <label
+                        class="font-label text-sm text-on-surface-variant font-medium ml-2"
+                        >Notes</label
+                    >
+                    <input
+                        class="w-full bg-surface-container-highest rounded-full py-3 px-6 font-body text-base text-on-surface placeholder-outline focus:outline-none focus:ring-2 focus:ring-primary-fixed focus:ring-opacity-50 border-none transition-shadow"
+                        placeholder="What was this for?"
+                        type="text"
+                    />
+                </div>
+            </section>
+            <!-- Save Button -->
+            <div class="w-full mt-8">
+                <button
+                    class="w-full rounded-full bg-gradient-to-r from-primary to-tertiary py-4 text-on-primary font-headline font-bold text-lg shadow-[0_8px_16px_rgba(78,69,228,0.2)] hover:opacity-90 transition-opacity"
+                >
+                    Save Expense
+                </button>
+            </div>
+        </main>
+        <!-- Bottom Navigation Suppressed - Task focused page intent -->
+    </body>
+</html>
