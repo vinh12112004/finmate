@@ -7,8 +7,8 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["FinMate/FinMate.csproj", "FinMate/"]
-RUN dotnet restore "FinMate/FinMate.csproj"
+COPY ["FinMate.csproj", "./"]
+RUN dotnet restore "FinMate.csproj"
 COPY . .
 WORKDIR "/src/FinMate"
 RUN dotnet build "./FinMate.csproj" -c $BUILD_CONFIGURATION -o /app/build
