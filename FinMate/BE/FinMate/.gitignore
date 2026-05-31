@@ -1,0 +1,27 @@
+## 1. Ẩn các file cấu hình chứa API Key / Mật mã bí mật
+**/appsettings.Development.json
+**/appsettings.Local.json
+## Nếu bạn vẫn muốn ẩn hoàn toàn file appsettings.json chính, hãy bỏ dấu # ở dòng dưới:
+# **/appsettings.json
+
+## 2. Ẩn các thư mục build tạm của .NET (Bắt buộc)
+**/bin/
+**/obj/
+
+## 3. Ẩn thư mục cấu hình của các IDE (Rider, Visual Studio, VS Code)
+.idea/
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## 4. Ẩn các file nhật ký hệ thống (Logs)
+*.log
+.pnp
+.pnp.js
+
+## 5. Ẩn các thư mục cài đặt package của Frontend (Nếu sau này bạn code chung repo)
+**/node_modules/
+dist/

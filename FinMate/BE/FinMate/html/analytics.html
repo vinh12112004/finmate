@@ -1,0 +1,518 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Fluid Scholar - Analytics</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            error: "#ac3149",
+                            "surface-tint": "#4e45e4",
+                            secondary: "#006d4a",
+                            "secondary-fixed-dim": "#5fedb0",
+                            "on-primary-fixed-variant": "#3220cb",
+                            "tertiary-dim": "#622bcb",
+                            "error-dim": "#770326",
+                            "on-tertiary-fixed": "#290068",
+                            "tertiary-container": "#c4acff",
+                            "inverse-on-surface": "#9a9d9f",
+                            "tertiary-fixed": "#c4acff",
+                            "on-background": "#2d3337",
+                            "inverse-primary": "#8582ff",
+                            "on-primary-container": "#270ac3",
+                            "on-error-container": "#68001f",
+                            "on-tertiary": "#fdf7ff",
+                            "surface-variant": "#dde3e7",
+                            "surface-bright": "#f7f9fb",
+                            "on-secondary-container": "#005e3f",
+                            "surface-container-lowest": "#ffffff",
+                            primary: "#4e45e4",
+                            "primary-fixed-dim": "#adabff",
+                            "outline-variant": "#acb3b7",
+                            "secondary-container": "#6ffbbe",
+                            "on-secondary-fixed": "#004930",
+                            "on-tertiary-fixed-variant": "#4d00b7",
+                            "surface-container": "#eaeef1",
+                            "inverse-surface": "#0b0f10",
+                            "on-primary-fixed": "#17008c",
+                            outline: "#757c7f",
+                            "tertiary-fixed-dim": "#b89bff",
+                            "surface-dim": "#d3dbdf",
+                            "on-secondary-fixed-variant": "#006947",
+                            "on-error": "#fff7f7",
+                            "primary-fixed": "#bdbaff",
+                            background: "#f7f9fb",
+                            "surface-container-highest": "#dde3e7",
+                            "on-surface": "#2d3337",
+                            "error-container": "#f76a80",
+                            "surface-container-high": "#e3e9ec",
+                            "primary-dim": "#4135d8",
+                            tertiary: "#6e3bd8",
+                            "surface-container-low": "#f1f4f6",
+                            "on-primary": "#fbf7ff",
+                            "on-secondary": "#e6ffee",
+                            "secondary-dim": "#005f40",
+                            "primary-container": "#bdbaff",
+                            surface: "#f7f9fb",
+                            "on-tertiary-container": "#4300a1",
+                            "secondary-fixed": "#6ffbbe",
+                            "on-surface-variant": "#596063",
+                        },
+                        borderRadius: {
+                            DEFAULT: "1rem",
+                            lg: "2rem",
+                            xl: "3rem",
+                            full: "9999px",
+                        },
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans", "sans-serif"],
+                            body: ["Inter", "sans-serif"],
+                            label: ["Inter", "sans-serif"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                font-family: "Inter", sans-serif;
+                background-color: theme("colors.background");
+                color: theme("colors.on-background");
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            .font-headline {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+        </style>
+        <style>
+            body {
+                min-height: max(884px, 100dvh);
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background text-on-background antialiased min-h-screen pb-24 md:pb-0"
+    >
+        <!-- TopAppBar -->
+        <header
+            class="sticky top-0 w-full z-50 flex items-center justify-between px-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-[40px] shadow-[0_32px_64px_rgba(45,51,55,0.05)] rounded-full mt-4 mx-4 px-6 py-2 transition-transform Active: scale-95 duration-200"
+            style="width: calc(100% - 2rem)"
+        >
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest"
+                >
+                    <img
+                        alt="Student Profile"
+                        class="w-full h-full object-cover"
+                        data-alt="portrait of a young student with a slight smile in soft natural lighting"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Aly_KZzZwut0f8jy2gWT_T6ZcYWSaoD9RyU4jGwshdD1qFiTDzggtFko6R7LieME3bqPpSMfvhGi5vh6XwHU3hoYdwyh3EIkx0xmJaGEpVVeOAWtr28fHSswsUyVzTxz8vBCnJCuRBHJvfFTRD_bFbt21NFFtE1iW1ihZKSD2ddpXATH11NX9OEf5Zzo9yRp4ntOsKcNNqMQWHFvaGQ6LTqSMkGb4IZQIqUEUfAhEDCzzX-uyC8JTIJSvAcUYUhZAaYNvRkHetI"
+                    />
+                </div>
+                <span
+                    class="text-xl font-black tracking-tighter text-indigo-600 dark:text-indigo-400 font-['Plus_Jakarta_Sans']"
+                    >Fluid Scholar</span
+                >
+            </div>
+            <button
+                class="text-indigo-600 dark:text-indigo-400 hover:opacity-80 transition-opacity"
+            >
+                <span
+                    class="material-symbols-outlined"
+                    style="font-variation-settings: &quot;FILL&quot; 0"
+                    >settings</span
+                >
+            </button>
+        </header>
+        <!-- Main Content Canvas -->
+        <main class="px-6 py-8 max-w-7xl mx-auto space-y-12">
+            <!-- Header Section -->
+            <section
+                class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 relative z-10"
+            >
+                <div>
+                    <h1
+                        class="font-headline text-4xl md:text-[3.5rem] font-bold text-on-surface leading-tight tracking-tight"
+                    >
+                        Spending Insights
+                    </h1>
+                    <p class="font-body text-on-surface-variant text-lg mt-2">
+                        October 2023 Overview
+                    </p>
+                </div>
+                <!-- Month Selector Pill -->
+                <div
+                    class="bg-surface-container-highest rounded-full px-6 py-3 flex items-center gap-4 shadow-[0_16px_32px_rgba(45,51,55,0.04)]"
+                >
+                    <button
+                        class="text-on-surface-variant hover:text-primary transition-colors"
+                    >
+                        <span class="material-symbols-outlined"
+                            >chevron_left</span
+                        >
+                    </button>
+                    <span class="font-label font-semibold text-on-surface"
+                        >October</span
+                    >
+                    <button
+                        class="text-on-surface-variant hover:text-primary transition-colors"
+                    >
+                        <span class="material-symbols-outlined"
+                            >chevron_right</span
+                        >
+                    </button>
+                </div>
+            </section>
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <!-- Total Spent Card (Hero) -->
+                <div
+                    class="md:col-span-8 bg-surface-container-lowest rounded-xl p-8 relative overflow-hidden group"
+                >
+                    <!-- Abstract Gradient Background Element -->
+                    <div
+                        class="absolute -top-24 -right-24 w-64 h-64 bg-gradient-to-br from-primary/20 to-tertiary/20 rounded-full blur-[40px] opacity-50 group-hover:opacity-70 transition-opacity duration-700"
+                    ></div>
+                    <div class="relative z-10">
+                        <p
+                            class="font-label text-on-surface-variant uppercase tracking-widest text-sm font-semibold mb-2"
+                        >
+                            Total Spent
+                        </p>
+                        <div class="flex items-baseline gap-4">
+                            <h2
+                                class="font-headline text-[3.5rem] font-extrabold text-on-surface tracking-tighter"
+                            >
+                                $1,245.50
+                            </h2>
+                            <span
+                                class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label text-sm font-semibold flex items-center gap-1"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-[16px]"
+                                    >arrow_downward</span
+                                >
+                                12% vs Last Mo
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Decorative Chart Area -->
+                    <div class="mt-12 h-48 w-full relative">
+                        <!-- Faux Bar Chart using gradients and borders -->
+                        <div
+                            class="absolute inset-0 flex items-end justify-between px-4 gap-2"
+                        >
+                            <div
+                                class="w-full bg-surface-container-high rounded-t-lg h-[40%] relative group-hover:bg-primary-container/30 transition-colors"
+                            ></div>
+                            <div
+                                class="w-full bg-surface-container-high rounded-t-lg h-[60%] relative group-hover:bg-primary-container/40 transition-colors"
+                            ></div>
+                            <div
+                                class="w-full bg-surface-container-high rounded-t-lg h-[30%] relative group-hover:bg-primary-container/30 transition-colors"
+                            ></div>
+                            <div
+                                class="w-full bg-gradient-to-t from-primary to-tertiary rounded-t-lg h-[80%] relative shadow-[0_-8px_16px_rgba(78,69,228,0.2)]"
+                            ></div>
+                            <div
+                                class="w-full bg-surface-container-high rounded-t-lg h-[50%] relative group-hover:bg-primary-container/30 transition-colors"
+                            ></div>
+                            <div
+                                class="w-full bg-surface-container-high rounded-t-lg h-[70%] relative group-hover:bg-primary-container/40 transition-colors"
+                            ></div>
+                            <div
+                                class="w-full bg-surface-container-high rounded-t-lg h-[45%] relative group-hover:bg-primary-container/30 transition-colors"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quick Tip Card -->
+                <div
+                    class="md:col-span-4 bg-gradient-to-br from-primary to-tertiary rounded-xl p-8 flex flex-col justify-between text-on-primary shadow-[0_32px_64px_rgba(78,69,228,0.15)]"
+                >
+                    <div>
+                        <div
+                            class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6 backdrop-blur-md"
+                        >
+                            <span
+                                class="material-symbols-outlined text-on-primary"
+                                >lightbulb</span
+                            >
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold mb-4">
+                            Scholar Tip
+                        </h3>
+                        <p class="font-body text-on-primary/90 leading-relaxed">
+                            You spent 30% less on dining out this month. Keep
+                            cooking at home to hit your $500 savings goal!
+                        </p>
+                    </div>
+                    <button
+                        class="mt-8 bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-label font-bold self-start hover:shadow-lg transition-shadow"
+                    >
+                        Set New Goal
+                    </button>
+                </div>
+                <!-- Categories Breakdown -->
+                <div
+                    class="md:col-span-5 bg-surface-container-lowest rounded-xl p-8 relative"
+                >
+                    <h3
+                        class="font-headline text-xl font-bold text-on-surface mb-6"
+                    >
+                        Top Categories
+                    </h3>
+                    <div class="space-y-6">
+                        <!-- Item 1 -->
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-on-primary-container"
+                                    >restaurant</span
+                                >
+                            </div>
+                            <div class="flex-1">
+                                <div
+                                    class="flex justify-between items-center mb-1"
+                                >
+                                    <span
+                                        class="font-label font-semibold text-on-surface"
+                                        >Food &amp; Dining</span
+                                    >
+                                    <span
+                                        class="font-label font-bold text-on-surface"
+                                        >$450</span
+                                    >
+                                </div>
+                                <div
+                                    class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden"
+                                >
+                                    <div
+                                        class="h-full bg-gradient-to-r from-secondary to-primary w-[60%] rounded-full"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-tertiary-container rounded-full flex items-center justify-center"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-on-tertiary-container"
+                                    >shopping_bag</span
+                                >
+                            </div>
+                            <div class="flex-1">
+                                <div
+                                    class="flex justify-between items-center mb-1"
+                                >
+                                    <span
+                                        class="font-label font-semibold text-on-surface"
+                                        >Shopping</span
+                                    >
+                                    <span
+                                        class="font-label font-bold text-on-surface"
+                                        >$320</span
+                                    >
+                                </div>
+                                <div
+                                    class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden"
+                                >
+                                    <div
+                                        class="h-full bg-gradient-to-r from-secondary to-primary w-[45%] rounded-full"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-surface-variant rounded-full flex items-center justify-center"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-on-surface-variant"
+                                    >directions_bus</span
+                                >
+                            </div>
+                            <div class="flex-1">
+                                <div
+                                    class="flex justify-between items-center mb-1"
+                                >
+                                    <span
+                                        class="font-label font-semibold text-on-surface"
+                                        >Transport</span
+                                    >
+                                    <span
+                                        class="font-label font-bold text-on-surface"
+                                        >$150</span
+                                    >
+                                </div>
+                                <div
+                                    class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden"
+                                >
+                                    <div
+                                        class="h-full bg-gradient-to-r from-secondary to-primary w-[25%] rounded-full"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Monthly Comparison -->
+                <div
+                    class="md:col-span-7 bg-surface-container-low rounded-xl p-8 relative overflow-hidden"
+                >
+                    <h3
+                        class="font-headline text-xl font-bold text-on-surface mb-6"
+                    >
+                        Monthly Comparison
+                    </h3>
+                    <div
+                        class="relative h-64 w-full flex items-end gap-6 justify-around px-4"
+                    >
+                        <!-- Sept -->
+                        <div
+                            class="flex flex-col items-center gap-4 w-16 group"
+                        >
+                            <div
+                                class="w-full h-32 bg-surface-variant rounded-t-full relative overflow-hidden transition-all duration-300 group-hover:h-36"
+                            >
+                                <div
+                                    class="absolute bottom-0 w-full h-full bg-gradient-to-t from-surface-tint/20 to-transparent"
+                                ></div>
+                            </div>
+                            <span
+                                class="font-label text-on-surface-variant text-sm"
+                                >Sept</span
+                            >
+                        </div>
+                        <!-- Oct (Current) -->
+                        <div
+                            class="flex flex-col items-center gap-4 w-16 group"
+                        >
+                            <div
+                                class="w-full h-48 bg-gradient-to-t from-primary to-tertiary rounded-t-full shadow-[0_0_32px_rgba(78,69,228,0.3)] relative overflow-hidden transition-all duration-300 group-hover:h-52"
+                            >
+                                <div
+                                    class="absolute inset-0 bg-white/10 mix-blend-overlay"
+                                ></div>
+                            </div>
+                            <span
+                                class="font-label font-bold text-primary text-sm"
+                                >Oct</span
+                            >
+                        </div>
+                        <!-- Nov (Proj) -->
+                        <div
+                            class="flex flex-col items-center gap-4 w-16 group"
+                        >
+                            <div
+                                class="w-full h-40 bg-surface-container-highest rounded-t-full border-2 border-dashed border-outline-variant/30 relative overflow-hidden transition-all duration-300 group-hover:h-44"
+                            ></div>
+                            <span
+                                class="font-label text-on-surface-variant text-sm"
+                                >Nov</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- BottomNavBar -->
+        <nav
+            class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/70 dark:bg-slate-900/70 backdrop-blur-[40px] rounded-t-[3rem] shadow-[0_-8px_32px_rgba(45,51,55,0.04)] md:hidden"
+        >
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1"
+                    style="font-variation-settings: &quot;FILL&quot; 0"
+                    >grid_view</span
+                >
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Home</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-200 rounded-full px-5 py-2 scale-90 duration-200"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >insights</span
+                >
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Insights</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1 text-2xl"
+                    style="font-variation-settings: &quot;FILL&quot; 0"
+                    >add_circle</span
+                >
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Add</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1"
+                    style="font-variation-settings: &quot;FILL&quot; 0"
+                    >notifications</span
+                >
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Alerts</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1"
+                    style="font-variation-settings: &quot;FILL&quot; 0"
+                    >person</span
+                >
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Profile</span
+                >
+            </a>
+        </nav>
+    </body>
+</html>

@@ -1,0 +1,397 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Settings - Fluid Scholar</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800;900&amp;family=Inter:wght@400;600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            error: "#ac3149",
+                            "surface-tint": "#4e45e4",
+                            secondary: "#006d4a",
+                            "secondary-fixed-dim": "#5fedb0",
+                            "on-primary-fixed-variant": "#3220cb",
+                            "tertiary-dim": "#622bcb",
+                            "error-dim": "#770326",
+                            "on-tertiary-fixed": "#290068",
+                            "tertiary-container": "#c4acff",
+                            "inverse-on-surface": "#9a9d9f",
+                            "tertiary-fixed": "#c4acff",
+                            "on-background": "#2d3337",
+                            "inverse-primary": "#8582ff",
+                            "on-primary-container": "#270ac3",
+                            "on-error-container": "#68001f",
+                            "on-tertiary": "#fdf7ff",
+                            "surface-variant": "#dde3e7",
+                            "surface-bright": "#f7f9fb",
+                            "on-secondary-container": "#005e3f",
+                            "surface-container-lowest": "#ffffff",
+                            primary: "#4e45e4",
+                            "primary-fixed-dim": "#adabff",
+                            "outline-variant": "#acb3b7",
+                            "secondary-container": "#6ffbbe",
+                            "on-secondary-fixed": "#004930",
+                            "on-tertiary-fixed-variant": "#4d00b7",
+                            "surface-container": "#eaeef1",
+                            "inverse-surface": "#0b0f10",
+                            "on-primary-fixed": "#17008c",
+                            outline: "#757c7f",
+                            "tertiary-fixed-dim": "#b89bff",
+                            "surface-dim": "#d3dbdf",
+                            "on-secondary-fixed-variant": "#006947",
+                            "on-error": "#fff7f7",
+                            "primary-fixed": "#bdbaff",
+                            background: "#f7f9fb",
+                            "surface-container-highest": "#dde3e7",
+                            "on-surface": "#2d3337",
+                            "error-container": "#f76a80",
+                            "surface-container-high": "#e3e9ec",
+                            "primary-dim": "#4135d8",
+                            tertiary: "#6e3bd8",
+                            "surface-container-low": "#f1f4f6",
+                            "on-primary": "#fbf7ff",
+                            "on-secondary": "#e6ffee",
+                            "secondary-dim": "#005f40",
+                            "primary-container": "#bdbaff",
+                            surface: "#f7f9fb",
+                            "on-tertiary-container": "#4300a1",
+                            "secondary-fixed": "#6ffbbe",
+                            "on-surface-variant": "#596063",
+                        },
+                        borderRadius: {
+                            DEFAULT: "1rem",
+                            lg: "2rem",
+                            xl: "3rem",
+                            full: "9999px",
+                        },
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans", "sans-serif"],
+                            body: ["Inter", "sans-serif"],
+                            label: ["Inter", "sans-serif"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style type="text/tailwindcss">
+            @layer utilities {
+                .glass-panel {
+                    @apply bg-surface/70 backdrop-blur-[40px] shadow-[0_32px_64px_rgba(45,51,55,0.05)];
+                }
+                .text-gradient-primary {
+                    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-tertiary;
+                }
+                .bg-gradient-primary {
+                    @apply bg-gradient-to-r from-primary to-tertiary;
+                }
+            }
+        </style>
+        <style>
+            body {
+                min-height: max(884px, 100dvh);
+            }
+        </style>
+    </head>
+    <body
+        class="bg-background text-on-surface font-body min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container"
+    >
+        <!-- TopAppBar -->
+        <header
+            class="sticky top-0 w-full z-50 flex items-center justify-between px-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-[40px] rounded-full mt-4 mx-4 px-6 py-2 shadow-[0_32px_64px_rgba(45,51,55,0.05)] text-indigo-600 dark:text-indigo-400 font-['Plus_Jakarta_Sans'] font-bold text-lg text-xl font-black tracking-tighter text-indigo-600 dark:text-indigo-400"
+        >
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-10 h-10 rounded-full overflow-hidden shrink-0 hover:opacity-80 transition-opacity"
+                >
+                    <img
+                        alt="Student Profile"
+                        class="w-full h-full object-cover"
+                        data-alt="close up portrait of young diverse student smiling in natural light with soft background blur"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlMiJhKRA5Rh9Crg1Pt6mSeOnBRpx2q29u93tHjY8jyBFMJvfAUyHx0LcrTuKcZF58N6eD4V74GqfYoa_HAFW35CCmigtor6MuoB3ASb04TRGpoiSbcfvFcKuSpsTGiReTDiLNgmTDjvu-ZggGmz-Krugo-0ZwDjB5Fs_ZCEXixoCa3OzcTP-MiUBSli55O1GuslBx8cybZ5PTNdDZOF-aJZCOPptnNn3fcBPxN94Zz0BDHhrtHijqBeWIm3KH-m12e_xFrBssQ40"
+                    />
+                </div>
+                <span class="font-headline font-black tracking-tighter text-xl"
+                    >Fluid Scholar</span
+                >
+            </div>
+            <button
+                aria-label="settings"
+                class="w-10 h-10 flex items-center justify-center rounded-full text-slate-500 dark:text-slate-400 hover:opacity-80 transition-opacity"
+            >
+                <span
+                    class="material-symbols-outlined"
+                    style="font-variation-settings: &quot;FILL&quot; 0"
+                    >settings</span
+                >
+            </button>
+        </header>
+        <!-- Main Content Canvas -->
+        <main
+            class="flex-grow p-6 pb-32 space-y-8 max-w-3xl mx-auto w-full relative z-10"
+        >
+            <!-- Header Section -->
+            <section class="space-y-2">
+                <h1
+                    class="font-headline font-bold text-4xl text-on-surface tracking-tight text-gradient-primary"
+                >
+                    Settings
+                </h1>
+                <p class="font-body text-on-surface-variant text-base">
+                    Manage your financial preferences.
+                </p>
+            </section>
+            <!-- Budget Configuration Card -->
+            <section
+                class="bg-surface-container-lowest rounded-xl p-8 relative overflow-hidden"
+            >
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"
+                ></div>
+                <div class="flex items-center gap-3 mb-6 relative z-10">
+                    <span
+                        class="material-symbols-outlined text-primary text-3xl"
+                        >account_balance_wallet</span
+                    >
+                    <h2
+                        class="font-headline font-bold text-2xl text-on-surface"
+                    >
+                        Monthly Budget
+                    </h2>
+                </div>
+                <div class="space-y-6 relative z-10">
+                    <div>
+                        <label
+                            class="block font-label font-semibold text-sm text-on-surface-variant mb-2"
+                            for="budget-amount"
+                            >Target Monthly Spend</label
+                        >
+                        <div class="relative flex items-center">
+                            <span
+                                class="absolute left-4 font-headline text-lg text-on-surface font-bold"
+                                >$</span
+                            >
+                            <input
+                                class="w-full bg-surface-container-highest rounded-full py-4 pl-10 pr-6 font-headline text-lg font-bold text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-fixed/50 border-none transition-all placeholder:text-outline"
+                                id="budget-amount"
+                                placeholder="Enter amount"
+                                type="number"
+                                value="850"
+                            />
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div
+                            class="flex justify-between items-center text-sm font-label text-on-surface-variant"
+                        >
+                            <span>Conservative</span>
+                            <span>Aggressive</span>
+                        </div>
+                        <div
+                            class="h-4 bg-surface-container-high rounded-full w-full overflow-hidden relative"
+                        >
+                            <div
+                                class="absolute top-0 left-0 h-full w-2/3 bg-gradient-primary rounded-full"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Smart Alerts Configuration -->
+            <section class="bg-surface-container-low rounded-xl p-8 relative">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="material-symbols-outlined text-secondary text-3xl"
+                        >notifications_active</span
+                    >
+                    <h2
+                        class="font-headline font-bold text-2xl text-on-surface"
+                    >
+                        Smart Alerts
+                    </h2>
+                </div>
+                <div class="space-y-4">
+                    <!-- Toggle Item 1 -->
+                    <div
+                        class="bg-surface-container-lowest rounded-lg p-5 flex items-center justify-between"
+                    >
+                        <div class="space-y-1 pr-4">
+                            <h3
+                                class="font-headline font-bold text-lg text-on-surface"
+                            >
+                                Overspending Warning
+                            </h3>
+                            <p
+                                class="font-body text-sm text-on-surface-variant leading-relaxed"
+                            >
+                                Get notified when you exceed 80% of your weekly
+                                category budget.
+                            </p>
+                        </div>
+                        <label
+                            class="relative inline-flex items-center cursor-pointer shrink-0"
+                        >
+                            <input
+                                checked=""
+                                class="sr-only peer"
+                                type="checkbox"
+                                value=""
+                            />
+                            <div
+                                class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"
+                            ></div>
+                        </label>
+                    </div>
+                    <!-- Toggle Item 2 -->
+                    <div
+                        class="bg-surface-container-lowest rounded-lg p-5 flex items-center justify-between"
+                    >
+                        <div class="space-y-1 pr-4">
+                            <h3
+                                class="font-headline font-bold text-lg text-on-surface"
+                            >
+                                Unusual Subscriptions
+                            </h3>
+                            <p
+                                class="font-body text-sm text-on-surface-variant leading-relaxed"
+                            >
+                                Alert me when a new recurring charge is detected
+                                or an existing one increases.
+                            </p>
+                        </div>
+                        <label
+                            class="relative inline-flex items-center cursor-pointer shrink-0"
+                        >
+                            <input
+                                checked=""
+                                class="sr-only peer"
+                                type="checkbox"
+                                value=""
+                            />
+                            <div
+                                class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"
+                            ></div>
+                        </label>
+                    </div>
+                </div>
+            </section>
+            <!-- Profile Preferences -->
+            <section class="bg-surface-container-lowest rounded-xl p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="material-symbols-outlined text-tertiary text-3xl"
+                        >manage_accounts</span
+                    >
+                    <h2
+                        class="font-headline font-bold text-2xl text-on-surface"
+                    >
+                        Profile Preferences
+                    </h2>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <label
+                            class="block font-label font-semibold text-sm text-on-surface-variant mb-2"
+                            for="display-name"
+                            >Display Name</label
+                        >
+                        <input
+                            class="w-full bg-surface-container-highest rounded-full py-4 px-6 font-body text-base text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-fixed/50 border-none transition-all placeholder:text-outline"
+                            id="display-name"
+                            type="text"
+                            value="Alex M."
+                        />
+                    </div>
+                    <div class="pt-4 border-t border-surface-variant/20">
+                        <button
+                            class="w-full bg-surface-variant/50 hover:bg-surface-variant text-error font-headline font-bold py-4 px-6 rounded-full transition-colors flex items-center justify-center gap-2"
+                        >
+                            <span class="material-symbols-outlined text-lg"
+                                >logout</span
+                            >
+                            Log Out
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- BottomNavBar -->
+        <nav
+            class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/70 dark:bg-slate-900/70 backdrop-blur-[40px] rounded-t-[3rem] bottom-0 w-full shadow-[0_-8px_32px_rgba(45,51,55,0.04)] font-['Inter'] text-[11px] font-semibold text-indigo-600 dark:text-indigo-400"
+        >
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1 text-2xl"
+                    style="font-variation-settings: &quot;FILL&quot; 0"
+                    >grid_view</span
+                >
+                <span>Home</span>
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1 text-2xl"
+                    style="font-variation-settings: &quot;FILL&quot; 0"
+                    >insights</span
+                >
+                <span>Insights</span>
+            </a>
+            <div class="relative -top-6">
+                <button
+                    aria-label="Add"
+                    class="w-14 h-14 bg-gradient-to-r from-primary to-tertiary rounded-full flex items-center justify-center text-on-primary shadow-lg hover:scale-105 transition-transform"
+                >
+                    <span
+                        class="material-symbols-outlined text-3xl"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >add</span
+                    >
+                </button>
+            </div>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1 text-2xl"
+                    style="font-variation-settings: &quot;FILL&quot; 0"
+                    >notifications</span
+                >
+                <span>Alerts</span>
+            </a>
+            <a
+                class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-200 rounded-full px-5 py-2 hover:text-indigo-500 transition-colors scale-90 duration-200"
+                href="#"
+            >
+                <span
+                    class="material-symbols-outlined mb-1 text-2xl"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >person</span
+                >
+                <span>Profile</span>
+            </a>
+        </nav>
+    </body>
+</html>

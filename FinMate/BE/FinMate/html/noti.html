@@ -1,0 +1,418 @@
+<!doctype html>
+
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Fluid Scholar - Notifications</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            error: "#ac3149",
+                            "surface-tint": "#4e45e4",
+                            secondary: "#006d4a",
+                            "secondary-fixed-dim": "#5fedb0",
+                            "on-primary-fixed-variant": "#3220cb",
+                            "tertiary-dim": "#622bcb",
+                            "error-dim": "#770326",
+                            "on-tertiary-fixed": "#290068",
+                            "tertiary-container": "#c4acff",
+                            "inverse-on-surface": "#9a9d9f",
+                            "tertiary-fixed": "#c4acff",
+                            "on-background": "#2d3337",
+                            "inverse-primary": "#8582ff",
+                            "on-primary-container": "#270ac3",
+                            "on-error-container": "#68001f",
+                            "on-tertiary": "#fdf7ff",
+                            "surface-variant": "#dde3e7",
+                            "surface-bright": "#f7f9fb",
+                            "on-secondary-container": "#005e3f",
+                            "surface-container-lowest": "#ffffff",
+                            primary: "#4e45e4",
+                            "primary-fixed-dim": "#adabff",
+                            "outline-variant": "#acb3b7",
+                            "secondary-container": "#6ffbbe",
+                            "on-secondary-fixed": "#004930",
+                            "on-tertiary-fixed-variant": "#4d00b7",
+                            "surface-container": "#eaeef1",
+                            "inverse-surface": "#0b0f10",
+                            "on-primary-fixed": "#17008c",
+                            outline: "#757c7f",
+                            "tertiary-fixed-dim": "#b89bff",
+                            "surface-dim": "#d3dbdf",
+                            "on-secondary-fixed-variant": "#006947",
+                            "on-error": "#fff7f7",
+                            "primary-fixed": "#bdbaff",
+                            background: "#f7f9fb",
+                            "surface-container-highest": "#dde3e7",
+                            "on-surface": "#2d3337",
+                            "error-container": "#f76a80",
+                            "surface-container-high": "#e3e9ec",
+                            "primary-dim": "#4135d8",
+                            tertiary: "#6e3bd8",
+                            "surface-container-low": "#f1f4f6",
+                            "on-primary": "#fbf7ff",
+                            "on-secondary": "#e6ffee",
+                            "secondary-dim": "#005f40",
+                            "primary-container": "#bdbaff",
+                            surface: "#f7f9fb",
+                            "on-tertiary-container": "#4300a1",
+                            "secondary-fixed": "#6ffbbe",
+                            "on-surface-variant": "#596063",
+                        },
+                        borderRadius: {
+                            DEFAULT: "1rem",
+                            lg: "2rem",
+                            xl: "3rem",
+                            full: "9999px",
+                        },
+                        spacing: {},
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans"],
+                            body: ["Inter"],
+                            label: ["Inter"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                background-color: theme("colors.surface");
+                color: theme("colors.on-surface");
+                font-family: theme("fontFamily.body");
+            }
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+            .icon-fill {
+                font-variation-settings:
+                    "FILL" 1,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+            }
+        </style>
+        <style>
+            body {
+                min-height: max(884px, 100dvh);
+            }
+        </style>
+    </head>
+    <body class="antialiased min-h-screen flex flex-col relative pb-24 md:pb-0">
+        <!-- TopAppBar -->
+        <header
+            class="sticky top-0 w-full z-50 flex items-center justify-between px-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-[40px] shadow-[0_32px_64px_rgba(45,51,55,0.05)] rounded-full mt-4 mx-4 w-[calc(100%-2rem)] py-2"
+        >
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-lowest bg-surface-container-high shadow-sm"
+                >
+                    <img
+                        alt="Student Profile"
+                        class="w-full h-full object-cover"
+                        data-alt="close-up portrait of young female student smiling warmly, soft natural lighting, shallow depth of field"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlbpZRe5b4lxrR5Rzg_gzbA4ddiJeZcsrJOat_JmhoU92kNcokF1dyLiHrgXKt0lGjQ1r79FeeieiNz8v0JVA4G26MHlEcUkI3jXjbXoG2s0XnrDg-yEQwpQA7jp5kZViIf5mzQJ1p_F3BOt1fnVm8Wj86lbl-bDQlk-QLahMqcN6BObdKHxgIxTHPRs5cciWrMw8XPuXGlBnVowbc3Oe2ya5l8MG3qs0lRfLeTqdp-8o-Rdiq7PEG1_fgiCG08HbswTsx0xScqQo"
+                    />
+                </div>
+            </div>
+            <div
+                class="text-xl font-black tracking-tighter text-indigo-600 dark:text-indigo-400 font-headline"
+            >
+                Fluid Scholar
+            </div>
+            <button
+                class="w-10 h-10 flex items-center justify-center rounded-full text-indigo-600 dark:text-indigo-400 hover:opacity-80 transition-opacity hover:bg-surface-container-high focus:outline-none focus:ring-2 focus:ring-primary-fixed"
+            >
+                <span class="material-symbols-outlined">settings</span>
+            </button>
+        </header>
+        <!-- Main Content Canvas -->
+        <main class="flex-1 w-full max-w-4xl mx-auto px-6 pt-8 pb-32">
+            <!-- Header Section -->
+            <div
+                class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4"
+            >
+                <div>
+                    <h1
+                        class="font-headline font-bold text-4xl text-on-surface mb-2"
+                    >
+                        Alerts
+                    </h1>
+                    <p class="font-body text-on-surface-variant">
+                        Stay on top of your smart spending.
+                    </p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button
+                        class="font-label text-sm font-semibold text-primary hover:text-primary-dim transition-colors flex items-center gap-1"
+                    >
+                        <span class="material-symbols-outlined text-lg"
+                            >done_all</span
+                        >
+                        Mark all read
+                    </button>
+                </div>
+            </div>
+            <!-- Filter Chips -->
+            <div class="flex gap-3 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+                <button
+                    class="px-5 py-2 rounded-sm bg-primary-container text-on-primary-container font-label text-sm font-medium whitespace-nowrap transition-colors"
+                >
+                    All Alerts
+                </button>
+                <button
+                    class="px-5 py-2 rounded-sm bg-surface-container-highest text-on-surface font-label text-sm font-medium whitespace-nowrap hover:bg-surface-variant transition-colors"
+                >
+                    Overspending
+                </button>
+                <button
+                    class="px-5 py-2 rounded-sm bg-surface-container-highest text-on-surface font-label text-sm font-medium whitespace-nowrap hover:bg-surface-variant transition-colors"
+                >
+                    Subscriptions
+                </button>
+            </div>
+            <!-- Notifications List Container -->
+            <div class="flex flex-col gap-4">
+                <!-- High Priority / Overspending Alert -->
+                <div
+                    class="bg-surface-container-lowest rounded-xl p-5 relative overflow-hidden group hover:shadow-[0_16px_32px_rgba(45,51,55,0.03)] transition-shadow"
+                >
+                    <!-- Subtle urgency indicator line on the left edge -->
+                    <div
+                        class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"
+                    ></div>
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-error-container/30 flex items-center justify-center shrink-0"
+                        >
+                            <span
+                                class="material-symbols-outlined text-error icon-fill"
+                                >trending_up</span
+                            >
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3
+                                    class="font-headline font-semibold text-lg text-on-background"
+                                >
+                                    Dining Out Limit Approaching
+                                </h3>
+                                <span
+                                    class="font-label text-xs text-error font-medium bg-error-container/20 px-2 py-0.5 rounded-sm"
+                                    >High Priority</span
+                                >
+                            </div>
+                            <p
+                                class="font-body text-on-surface-variant text-sm mb-3"
+                            >
+                                You've spent 90% of your $200 dining budget this
+                                month. Consider cooking at home this weekend.
+                            </p>
+                            <div class="flex items-center gap-4 mt-2">
+                                <button
+                                    class="font-label text-sm font-medium text-primary hover:text-primary-dim transition-colors"
+                                >
+                                    View Budget
+                                </button>
+                                <span class="text-on-surface-variant text-xs"
+                                    >2 hours ago</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Warning / Subscription Alert -->
+                <div
+                    class="bg-surface-container-low rounded-xl p-5 hover:bg-surface-container-lowest hover:shadow-[0_16px_32px_rgba(45,51,55,0.03)] transition-all"
+                >
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center shrink-0 relative"
+                        >
+                            <div
+                                class="absolute top-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-surface-container-low"
+                            ></div>
+                            <span
+                                class="material-symbols-outlined text-on-surface icon-fill"
+                                >subscriptions</span
+                            >
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3
+                                    class="font-headline font-semibold text-lg text-on-background"
+                                >
+                                    Upcoming Subscription
+                                </h3>
+                            </div>
+                            <p
+                                class="font-body text-on-surface-variant text-sm mb-3"
+                            >
+                                Spotify Premium ($10.99) will be charged to your
+                                account tomorrow.
+                            </p>
+                            <div class="flex items-center gap-4 mt-2">
+                                <button
+                                    class="font-label text-sm font-medium text-primary hover:text-primary-dim transition-colors"
+                                >
+                                    Manage Subscriptions
+                                </button>
+                                <span class="text-on-surface-variant text-xs"
+                                    >Yesterday</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Insight / Positive Alert -->
+                <div
+                    class="bg-surface-container-low rounded-xl p-5 hover:bg-surface-container-lowest hover:shadow-[0_16px_32px_rgba(45,51,55,0.03)] transition-all"
+                >
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center shrink-0"
+                        >
+                            <span
+                                class="material-symbols-outlined text-secondary icon-fill"
+                                >savings</span
+                            >
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3
+                                    class="font-headline font-semibold text-lg text-on-background"
+                                >
+                                    Savings Goal Reached!
+                                </h3>
+                            </div>
+                            <p
+                                class="font-body text-on-surface-variant text-sm mb-3"
+                            >
+                                Congratulations! You've hit your $500 target for
+                                the "Spring Break Trip" fund.
+                            </p>
+                            <div class="flex items-center gap-4 mt-2">
+                                <button
+                                    class="font-label text-sm font-medium text-primary hover:text-primary-dim transition-colors"
+                                >
+                                    View Goal
+                                </button>
+                                <span class="text-on-surface-variant text-xs"
+                                    >Oct 24</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Read / Informational Alert -->
+                <div
+                    class="bg-surface-container rounded-xl p-5 opacity-70 hover:opacity-100 transition-opacity"
+                >
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center shrink-0"
+                        >
+                            <span class="material-symbols-outlined text-outline"
+                                >account_balance</span
+                            >
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3
+                                    class="font-headline font-semibold text-lg text-on-background"
+                                >
+                                    Weekly Summary Ready
+                                </h3>
+                            </div>
+                            <p
+                                class="font-body text-on-surface-variant text-sm mb-3"
+                            >
+                                Your spending summary for last week is now
+                                available to view.
+                            </p>
+                            <div class="flex items-center gap-4 mt-2">
+                                <span class="text-on-surface-variant text-xs"
+                                    >Oct 22</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- BottomNavBar (Mobile Only) -->
+        <nav
+            class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/70 dark:bg-slate-900/70 backdrop-blur-[40px] shadow-[0_-8px_32px_rgba(45,51,55,0.04)] rounded-t-[3rem]"
+        >
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span class="material-symbols-outlined mb-1">grid_view</span>
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Home</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span class="material-symbols-outlined mb-1">insights</span>
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Insights</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span class="material-symbols-outlined mb-1">add_circle</span>
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Add</span
+                >
+            </a>
+            <!-- Active Tab -->
+            <a
+                class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-200 rounded-full px-5 py-2 scale-90 duration-200"
+                href="#"
+            >
+                <span class="material-symbols-outlined mb-1 icon-fill"
+                    >notifications</span
+                >
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Alerts</span
+                >
+            </a>
+            <a
+                class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-indigo-500 transition-colors"
+                href="#"
+            >
+                <span class="material-symbols-outlined mb-1">person</span>
+                <span class="font-['Inter'] text-[11px] font-semibold"
+                    >Profile</span
+                >
+            </a>
+        </nav>
+    </body>
+</html>
