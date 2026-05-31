@@ -9,13 +9,13 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["FinMate.csproj", "./"]
 RUN dotnet restore "FinMate.csproj"
+
 COPY . .
-WORKDIR "/src/FinMate"
-RUN dotnet build "./FinMate.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "FinMate.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./FinMate.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "FinMate.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
