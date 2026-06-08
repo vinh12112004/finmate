@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import { Link } from 'react-router-dom'
 
 function cx(...classes) {
@@ -407,6 +408,7 @@ export function TextField({
   className = '',
   disabled,
   id,
+  inputMode,
   inputClassName = '',
   label,
   min,
@@ -415,25 +417,32 @@ export function TextField({
   placeholder,
   rows = 4,
   step,
+  trailingAction,
   type = 'text',
   value,
 }) {
+  const generatedId = useId()
+  const controlId = id || generatedId
   const controlClass = cx(
     'min-h-12 w-full rounded-lg border border-transparent bg-surface-container-high px-4 font-body text-base text-on-surface placeholder:text-outline outline-none transition focus:border-primary/40 focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/10 disabled:cursor-not-allowed disabled:opacity-60',
     multiline ? 'resize-none py-3 leading-relaxed' : 'py-3',
+    trailingAction && !multiline ? 'pr-12' : '',
     inputClassName,
   )
 
   return (
-    <label className={cx('block', className)} htmlFor={id}>
+    <div className={cx('block', className)}>
       {label ? (
-        <span className="mb-2 block font-label text-sm font-bold text-on-surface-variant">
+        <label
+          htmlFor={controlId}
+          className="mb-2 block font-label text-sm font-bold text-on-surface-variant"
+        >
           {label}
-        </span>
+        </label>
       ) : null}
       {multiline ? (
         <textarea
-          id={id}
+          id={controlId}
           rows={rows}
           disabled={disabled}
           placeholder={placeholder}
@@ -442,21 +451,29 @@ export function TextField({
           className={controlClass}
         />
       ) : (
-        <input
-          id={id}
-          autoComplete={autoComplete}
-          autoFocus={autoFocus}
-          disabled={disabled}
-          min={min}
-          placeholder={placeholder}
-          step={step}
-          type={type}
-          value={value}
-          onChange={onChange}
-          className={controlClass}
-        />
+        <div className="relative">
+          <input
+            id={controlId}
+            autoComplete={autoComplete}
+            autoFocus={autoFocus}
+            disabled={disabled}
+            inputMode={inputMode}
+            min={min}
+            placeholder={placeholder}
+            step={step}
+            type={type}
+            value={value}
+            onChange={onChange}
+            className={controlClass}
+          />
+          {trailingAction ? (
+            <div className="absolute inset-y-0 right-1 flex items-center">
+              {trailingAction}
+            </div>
+          ) : null}
+        </div>
       )}
-    </label>
+    </div>
   )
 }
 

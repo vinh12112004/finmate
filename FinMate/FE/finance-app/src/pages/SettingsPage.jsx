@@ -29,6 +29,16 @@ const currencySymbols = {
     CNY: "¥",
 };
 
+function formatBudgetInput(value) {
+    const digits = String(value || "").replace(/\D/g, "");
+
+    return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+function parseBudgetInput(value) {
+    return Number(String(value || "").replace(/\D/g, ""));
+}
+
 export function SettingsPage() {
     const {
         budget,
@@ -166,15 +176,19 @@ function BudgetForm({
     updateBudget,
 }) {
     const [budgetInput, setBudgetInput] = useState(
-        initialMonthlyBudget ? String(initialMonthlyBudget) : "",
+        initialMonthlyBudget ? formatBudgetInput(initialMonthlyBudget) : "",
     );
     const [budgetFormError, setBudgetFormError] = useState("");
     const [isSavingBudget, setIsSavingBudget] = useState(false);
 
+    const handleBudgetInputChange = (event) => {
+        setBudgetInput(formatBudgetInput(event.target.value));
+    };
+
     const handleBudgetSubmit = async (event) => {
         event.preventDefault();
 
-        const monthlyBudget = Number(budgetInput);
+        const monthlyBudget = parseBudgetInput(budgetInput);
         if (!monthlyBudget || monthlyBudget <= 0) {
             setBudgetFormError("Ngân sách tháng phải lớn hơn 0.");
             return;
@@ -227,10 +241,10 @@ function BudgetForm({
                 <>
                     <TextField
                         label={`Mục tiêu chi tháng (${currencySymbols[currency] || currency})`}
-                        min="0"
-                        type="number"
+                        inputMode="numeric"
+                        type="text"
                         value={budgetInput}
-                        onChange={(event) => setBudgetInput(event.target.value)}
+                        onChange={handleBudgetInputChange}
                         disabled={isSavingBudget}
                         placeholder="Nhập ngân sách tháng"
                     />

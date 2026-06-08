@@ -15,6 +15,9 @@ export function LoginPage() {
   })
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState(false)
   const isRegisterMode = mode === 'register'
 
   const updateField = (field, value) => {
@@ -24,6 +27,8 @@ export function LoginPage() {
   const switchMode = () => {
     setMode((current) => (current === 'login' ? 'register' : 'login'))
     setError('')
+    setIsPasswordVisible(false)
+    setIsConfirmPasswordVisible(false)
     setForm((current) => ({ ...current, password: '', confirmPassword: '' }))
   }
 
@@ -107,9 +112,18 @@ export function LoginPage() {
               disabled={isSubmitting}
               label="Mật khẩu"
               placeholder="Nhập mật khẩu"
-              type="password"
+              type={isPasswordVisible ? 'text' : 'password'}
               value={form.password}
               onChange={(event) => updateField('password', event.target.value)}
+              trailingAction={
+                <PasswordVisibilityButton
+                  disabled={isSubmitting}
+                  visible={isPasswordVisible}
+                  onClick={() =>
+                    setIsPasswordVisible((current) => !current)
+                  }
+                />
+              }
             />
 
             {isRegisterMode ? (
@@ -118,10 +132,19 @@ export function LoginPage() {
                 disabled={isSubmitting}
                 label="Nhập lại mật khẩu"
                 placeholder="Nhập lại mật khẩu"
-                type="password"
+                type={isConfirmPasswordVisible ? 'text' : 'password'}
                 value={form.confirmPassword}
                 onChange={(event) =>
                   updateField('confirmPassword', event.target.value)
+                }
+                trailingAction={
+                  <PasswordVisibilityButton
+                    disabled={isSubmitting}
+                    visible={isConfirmPasswordVisible}
+                    onClick={() =>
+                      setIsConfirmPasswordVisible((current) => !current)
+                    }
+                  />
                 }
               />
             ) : null}
@@ -157,5 +180,25 @@ export function LoginPage() {
         </button>
       </section>
     </main>
+  )
+}
+
+function PasswordVisibilityButton({ disabled, onClick, visible }) {
+  const label = visible ? 'Ẩn mật khẩu' : 'Hiển thị mật khẩu'
+
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      aria-pressed={visible}
+      title={label}
+      disabled={disabled}
+      onClick={onClick}
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant transition-colors hover:bg-surface-container-highest hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 disabled:cursor-not-allowed disabled:opacity-55"
+    >
+      <span className="material-symbols-outlined text-[22px]">
+        {visible ? 'visibility_off' : 'visibility'}
+      </span>
+    </button>
   )
 }
