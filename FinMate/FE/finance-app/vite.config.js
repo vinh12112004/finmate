@@ -6,7 +6,7 @@ export default defineConfig({
     plugins: [react()],
     server: {
         proxy: {
-            "/api": "https://syndesmotic-tisa-unsnaffled.ngrok-free.dev/",
+            "/api": "https://finmate-aysz.onrender.com/",
         },
     },
 });
